@@ -218,10 +218,18 @@ class _CarouselSliderDataFoundState extends State<CarouselSliderDataFound> {
                           crossAxisCount: 2,
                           children: carouselSmall
                               .map(
-                                (e) => Container(
-                                  padding: const EdgeInsets.all(8),
-                                  color: Colors.teal[100],
-                                  child: Image.network(e),
+                                (e) => CachedNetworkImage(
+                                  imageUrl: e,
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                  progressIndicatorBuilder:
+                                      (context, url, downloadProgress) => Center(
+                                    child: CircularProgressIndicator(
+                                      value: downloadProgress.progress,
+                                    ),
+                                  ),
+                                  fit: BoxFit.cover,
+                                  width: 1000,
                                 ),
                               )
                               .toList()),

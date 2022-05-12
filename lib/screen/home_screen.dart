@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
                 if(_c.carouselData.length>0)
                   return CarouselSliderDataFound(_c.carouselData);
                 else
-                  return CarouselLoading();
+                  return Center(child: CircularProgressIndicator());
               else
                 if(_c.carouselData.length>0)
                   return CarouselSliderDataFound(_c.carouselData);
